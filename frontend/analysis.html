@@ -40,13 +40,8 @@
                     <a href="analysis.html" class="text-accent">Analysis</a>
                     <a href="editor.html" class="hover:text-accent transition">Create Document</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
-                            JD
-                        </div>
-                        <span class="hidden md:inline">John Doe</span>
-                    </div>
+                <div id="navAuthSection" class="flex items-center space-x-4">
+                    <!-- Auth section will be populated by auth.js -->
                 </div>
             </div>
         </div>
@@ -350,6 +345,13 @@
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
+    <script>
+        // Require authentication for this page
+        if (!requireAuth()) {
+            // Redirect handled by requireAuth()
+        }
+    </script>
     <script src="js/data.js"></script>
     <script src="js/bd-legal-data.js"></script>
     <script src="js/analysis.js"></script>

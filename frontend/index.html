@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLB Buddy - Legal Document Tool</title>
+    <title>LLB Buddy - Legal Document Tool & AI Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
     <script>
@@ -40,158 +40,470 @@
                     <a href="analysis.html" class="hover:text-accent transition">Analysis</a>
                     <a href="editor.html" class="hover:text-accent transition">Create Document</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-accent text-primary px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition">
-                        Sign In
-                    </button>
+                <div id="navAuthSection" class="flex items-center space-x-4">
+                    <a href="login.html" class="hover:text-accent transition">Login</a>
+                    <a href="signup.html" class="bg-accent text-primary px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition">
+                        Sign Up
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary to-secondary text-white py-20">
+    <!-- Hero Section - Both Features -->
+    <section class="bg-gradient-to-br from-primary via-secondary to-primary text-white py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                        Create Legal Documents with Confidence
-                    </h1>
-                    <p class="text-xl text-gray-200 mb-8">
-                        LLB Buddy helps you draft, manage, and organize legal documents efficiently.
-                        Access professional templates and streamline your legal workflow.
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-4">
+                    Bangladesh's Legal Document Platform
+                </span>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Create, Analyze & Verify<br>Legal Documents
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+                    LLB Buddy combines powerful document creation with AI-powered analysis.
+                    Draft professional documents, query Bangladesh laws, and verify compliance - all in one platform.
+                </p>
+            </div>
+
+            <!-- Two Main CTAs -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Document Creation CTA -->
+                <a href="templates.html" class="group bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-accent rounded-xl flex items-center justify-center">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Create Documents</h3>
+                            <p class="text-gray-300 text-sm">Professional templates & editor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 mb-4">
+                        Access 50+ legal templates, use smart fields, and create professional documents in minutes.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="dashboard.html" class="bg-accent text-primary px-8 py-3 rounded-lg font-semibold text-center hover:bg-yellow-400 transition">
-                            Get Started Free
-                        </a>
-                        <a href="templates.html" class="border-2 border-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-white hover:text-primary transition">
-                            Browse Templates
-                        </a>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="bg-white rounded-lg shadow-2xl p-6 transform rotate-2">
-                        <div class="border-b pb-4 mb-4">
-                            <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                            <div class="h-3 bg-gray-100 rounded w-1/2"></div>
+                    <span class="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all">
+                        Start Creating
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- AI Analysis CTA -->
+                <a href="analysis.html" class="group bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 bg-accent rounded-xl flex items-center justify-center">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
                         </div>
-                        <div class="space-y-3">
-                            <div class="h-3 bg-gray-100 rounded"></div>
-                            <div class="h-3 bg-gray-100 rounded w-5/6"></div>
-                            <div class="h-3 bg-gray-100 rounded w-4/6"></div>
-                            <div class="h-3 bg-gray-100 rounded w-5/6"></div>
+                        <div>
+                            <h3 class="text-xl font-bold">AI Analysis</h3>
+                            <p class="text-gray-300 text-sm">Query & verify documents</p>
                         </div>
                     </div>
-                </div>
+                    <p class="text-gray-200 mb-4">
+                        Ask questions about BD laws, upload documents for analysis, and verify legal compliance instantly.
+                    </p>
+                    <span class="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all">
+                        Try AI Analysis
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Two Pillars Section -->
     <section class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Everything You Need for Legal Documents</h2>
-                <p class="text-xl text-gray-600">Powerful tools designed for legal professionals and individuals alike</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Two Powerful Tools, One Platform</h2>
+                <p class="text-xl text-gray-600">Everything you need for Bangladesh legal documents</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                        </svg>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Document Creation Pillar -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-primary p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Document Creation
+                        </h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Professional Templates</h3>
-                    <p class="text-gray-600">Access a library of professionally drafted legal document templates ready for customization.</p>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">50+ Professional Templates</h4>
+                                    <p class="text-gray-600 text-sm">Contracts, NDAs, employment, lease, wills & more</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Smart Fields Auto-Fill</h4>
+                                    <p class="text-gray-600 text-sm">Enter data once, populate throughout document</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Clause Library</h4>
+                                    <p class="text-gray-600 text-sm">Insert standard legal clauses with one click</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Export & Share</h4>
+                                    <p class="text-gray-600 text-sm">Download as PDF, DOC, TXT or share via link</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="templates.html" class="mt-6 inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                            Browse Templates
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <!-- Feature 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                        </svg>
+
+                <!-- AI Analysis Pillar -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-secondary p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            AI Document Analysis
+                        </h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Editing</h3>
-                    <p class="text-gray-600">Intuitive document editor with smart fields and formatting tools for quick customization.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
-                        </svg>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">BD Legal Library</h4>
+                                    <p class="text-gray-600 text-sm">12 major laws: Constitution, Penal Code, Contract Act & more</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Ask Questions in Plain Language</h4>
+                                    <p class="text-gray-600 text-sm">Get AI-powered answers about legal provisions</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Document Verification</h4>
+                                    <p class="text-gray-600 text-sm">Check compliance with color-coded highlights</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Issue Detection</h4>
+                                    <p class="text-gray-600 text-sm">Find non-compliant clauses with fix suggestions</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="analysis.html" class="mt-6 inline-flex items-center gap-2 text-secondary font-semibold hover:gap-3 transition-all">
+                            Try AI Analysis
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Organized Storage</h3>
-                    <p class="text-gray-600">Keep all your documents organized with folders, tags, and powerful search functionality.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Document Analysis Section -->
-    <section class="py-20 bg-gradient-to-br from-secondary to-primary text-white">
+    <!-- AI Chat Demo Section -->
+    <section class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <span class="px-4 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium">New Feature</span>
-                    <h2 class="text-3xl font-bold mt-4 mb-6">AI-Powered Document Analysis</h2>
-                    <p class="text-lg text-gray-200 mb-6">
-                        Upload your legal documents and get instant analysis. Ask questions, verify authenticity, and ensure compliance with Bangladesh law.
+                    <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-medium mb-4">
+                        AI-Powered
+                    </span>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                        Ask Questions About Bangladesh Law
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our AI assistant understands Bangladesh legal documents. Ask questions in plain language and get accurate,
+                        contextual answers with references to specific sections and articles.
                     </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Access BD Legal Library - Constitution, Penal Code, Contract Act & more</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Ask questions about any legal document in plain language</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Verify document clauses with highlighted issues and suggestions</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Check compliance with Bangladesh Labour Act, Contract Act & more</span>
-                        </li>
-                    </ul>
-                    <a href="analysis.html" class="inline-block bg-accent text-primary px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition">
-                        Try Document Analysis
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-700">"What are my rights under the Labour Act?"</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-700">"How do I register a property transfer?"</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-700">"What's the punishment for theft?"</span>
+                        </div>
+                    </div>
+                    <a href="analysis.html" class="mt-8 inline-flex items-center gap-2 bg-secondary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary transition">
+                        Start Asking Questions
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
                     </a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+
+                <!-- Chat Demo -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-primary p-4 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-primary text-sm font-bold">U</div>
-                                <div class="bg-white/20 rounded-lg p-3 text-sm">
-                                    What are the termination requirements under Bangladesh Labour Act?
-                                </div>
+                        <div>
+                            <h4 class="text-white font-semibold">LLB Buddy AI</h4>
+                            <p class="text-gray-300 text-sm">Legal Document Assistant</p>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4 h-80 overflow-y-auto">
+                        <div class="flex justify-end">
+                            <div class="bg-primary text-white rounded-lg rounded-tr-none p-3 max-w-[80%]">
+                                What notice period is required for terminating an employee under Bangladesh law?
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold">AI</div>
-                                <div class="bg-white/10 rounded-lg p-3 text-sm">
-                                    Under Section 20 of the Labour Act 2006, monthly-rated workers with more than 1 year of service require 120 days' notice...
-                                </div>
+                        </div>
+                        <div class="flex justify-start">
+                            <div class="bg-gray-100 text-gray-800 rounded-lg rounded-tl-none p-3 max-w-[80%]">
+                                <p class="mb-2">Under <strong>Section 20 of the Bangladesh Labour Act 2006</strong>:</p>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li><strong>Monthly-rated workers:</strong> 120 days notice</li>
+                                    <li><strong>Other workers:</strong> 60 days notice</li>
+                                </ul>
+                                <p class="mt-2 text-sm">This applies to workers with at least 1 year of continuous service. Payment in lieu of notice is also permitted.</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <div class="bg-primary text-white rounded-lg rounded-tr-none p-3 max-w-[80%]">
+                                What about compensation for termination?
+                            </div>
+                        </div>
+                        <div class="flex justify-start">
+                            <div class="bg-gray-100 text-gray-800 rounded-lg rounded-tl-none p-3 max-w-[80%]">
+                                <p class="mb-2">For <strong>retrenchment</strong>, Section 20 also requires:</p>
+                                <p class="text-sm">Compensation of <strong>30 days' wages</strong> for each completed year of service, in addition to any notice pay.</p>
                             </div>
                         </div>
                     </div>
+                    <div class="border-t p-4">
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="Ask a legal question..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" disabled>
+                            <button class="px-4 py-2 bg-primary text-white rounded-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BD Legal Library Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Bangladesh Legal Library</h2>
+                <p class="text-xl text-gray-600">Access 12 major laws and acts of Bangladesh</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">📜</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Constitution of BD</h4>
+                    <p class="text-sm text-gray-500">1972</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">⚖️</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Penal Code</h4>
+                    <p class="text-sm text-gray-500">1860</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">📋</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Criminal Procedure</h4>
+                    <p class="text-sm text-gray-500">1898</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Contract Act</h4>
+                    <p class="text-sm text-gray-500">1872</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">👨‍👩‍👧</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Muslim Family Laws</h4>
+                    <p class="text-sm text-gray-500">1961</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">🏠</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Transfer of Property</h4>
+                    <p class="text-sm text-gray-500">1882</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">👷</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Labour Act</h4>
+                    <p class="text-sm text-gray-500">2006</p>
+                </a>
+                <a href="analysis.html" class="bg-white rounded-xl p-5 shadow hover:shadow-lg transition group">
+                    <div class="text-3xl mb-3">🏢</div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Companies Act</h4>
+                    <p class="text-sm text-gray-500">1994</p>
+                </a>
+            </div>
+            <div class="text-center mt-8">
+                <a href="analysis.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                    View All 12 Laws
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Document Verification Demo -->
+    <section class="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Verification Demo -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden text-gray-900">
+                    <div class="bg-gray-50 p-4 border-b flex items-center justify-between">
+                        <span class="font-semibold">Document Verification</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-500">Score:</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">85%</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4 flex gap-4 text-sm">
+                            <span class="flex items-center gap-1">
+                                <span class="w-3 h-3 bg-green-200 rounded"></span> Valid
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <span class="w-3 h-3 bg-yellow-200 rounded"></span> Warning
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <span class="w-3 h-3 bg-red-200 rounded"></span> Issue
+                            </span>
+                        </div>
+                        <div class="prose prose-sm max-w-none">
+                            <h4 class="text-lg font-bold mb-3">Employment Contract</h4>
+                            <p><span class="bg-green-100 px-1">Working Hours: 8 hours per day, 6 days per week</span></p>
+                            <p class="text-xs text-green-600 mb-3">Complies with Section 100 of Labour Act 2006</p>
+
+                            <p><span class="bg-yellow-100 px-1">Salary payment on 5th of each month</span></p>
+                            <p class="text-xs text-yellow-600 mb-3">Warning: Ensure compliance with 7-day rule (Section 122)</p>
+
+                            <p><span class="bg-red-100 px-1">Termination with 15 days notice</span></p>
+                            <p class="text-xs text-red-600">Issue: Does not comply with Section 20 (120 days required)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-4">
+                        Compliance Check
+                    </span>
+                    <h2 class="text-3xl font-bold mb-6">
+                        Verify Your Documents Against BD Law
+                    </h2>
+                    <p class="text-lg text-gray-200 mb-6">
+                        Upload any legal document and our AI will analyze it against Bangladesh law.
+                        Get instant feedback with highlighted issues and suggestions for fixes.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Authenticity verification</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Legal compliance check</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>Standard clause verification</span>
+                        </li>
+                    </ul>
+                    <a href="analysis.html" class="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition">
+                        Verify a Document
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -200,43 +512,43 @@
     <!-- Document Types Section -->
     <section class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Popular Document Types</h2>
-                <p class="text-xl text-gray-600">Create any legal document you need</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Create Any Legal Document</h2>
+                <p class="text-xl text-gray-600">Professional templates for all your needs</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">📜</div>
-                    <h4 class="font-semibold text-gray-900">Contracts</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Contracts</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">🏠</div>
-                    <h4 class="font-semibold text-gray-900">Lease Agreements</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Lease Agreements</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">💼</div>
-                    <h4 class="font-semibold text-gray-900">Employment</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Employment</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">🤝</div>
-                    <h4 class="font-semibold text-gray-900">NDAs</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">NDAs</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">📋</div>
-                    <h4 class="font-semibold text-gray-900">Wills & Trusts</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Wills & Trusts</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">⚖️</div>
-                    <h4 class="font-semibold text-gray-900">Power of Attorney</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Power of Attorney</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">🏢</div>
-                    <h4 class="font-semibold text-gray-900">Business Formation</h4>
-                </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Business Formation</h4>
+                </a>
+                <a href="templates.html" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition cursor-pointer group">
                     <div class="text-4xl mb-3">📝</div>
-                    <h4 class="font-semibold text-gray-900">Affidavits</h4>
-                </div>
+                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition">Affidavits</h4>
+                </a>
             </div>
         </div>
     </section>
@@ -244,10 +556,14 @@
     <!-- Stats Section -->
     <section class="py-16 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
                 <div>
                     <div class="text-4xl font-bold text-accent mb-2">50+</div>
                     <div class="text-gray-300">Templates</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-accent mb-2">12</div>
+                    <div class="text-gray-300">BD Laws</div>
                 </div>
                 <div>
                     <div class="text-4xl font-bold text-accent mb-2">10K+</div>
@@ -255,7 +571,7 @@
                 </div>
                 <div>
                     <div class="text-4xl font-bold text-accent mb-2">5K+</div>
-                    <div class="text-gray-300">Happy Users</div>
+                    <div class="text-gray-300">AI Queries</div>
                 </div>
                 <div>
                     <div class="text-4xl font-bold text-accent mb-2">99%</div>
@@ -270,11 +586,16 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
             <p class="text-xl text-gray-600 mb-8">
-                Join thousands of users who trust LLB Buddy for their legal document needs.
+                Create professional documents or analyze legal texts - all in one platform.
             </p>
-            <a href="dashboard.html" class="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition">
-                Start Creating Documents
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="signup.html" class="inline-block bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary transition">
+                    Sign Up Free
+                </a>
+                <a href="analysis.html" class="inline-block border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-white transition">
+                    Try AI Analysis
+                </a>
+            </div>
         </div>
     </section>
 
@@ -289,37 +610,39 @@
                         </svg>
                         <span class="text-xl font-bold text-white">LLB Buddy</span>
                     </div>
-                    <p class="text-sm">Your trusted partner for legal document creation and management.</p>
+                    <p class="text-sm">Your trusted partner for legal document creation, analysis, and verification in Bangladesh.</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <h4 class="text-white font-semibold mb-4">Document Creation</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="templates.html" class="hover:text-white transition">Templates</a></li>
                         <li><a href="editor.html" class="hover:text-white transition">Document Editor</a></li>
-                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition">My Documents</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Resources</h4>
+                    <h4 class="text-white font-semibold mb-4">AI Analysis</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
-                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="#" class="hover:text-white transition">Legal Guide</a></li>
+                        <li><a href="analysis.html" class="hover:text-white transition">BD Legal Library</a></li>
+                        <li><a href="analysis.html" class="hover:text-white transition">Ask Questions</a></li>
+                        <li><a href="analysis.html" class="hover:text-white transition">Verify Documents</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <h4 class="text-white font-semibold mb-4">Account</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+                        <li><a href="signup.html" class="hover:text-white transition">Sign Up</a></li>
                         <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
-                <p>&copy; 2024 LLB Buddy. All rights reserved.</p>
+                <p>&copy; 2024 LLB Buddy. All rights reserved. For Bangladesh Legal Professionals.</p>
             </div>
         </div>
     </footer>
+
+    <script src="js/auth.js"></script>
 </body>
 </html>
