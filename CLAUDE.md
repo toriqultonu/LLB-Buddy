@@ -14,26 +14,30 @@ open frontend/index.html
 ```
 LLB-Buddy/
 ├── CLAUDE.md                   # Project documentation
-└── frontend/
-    ├── index.html              # Landing page with hero & features
-    ├── login.html              # User login page
-    ├── signup.html             # User registration page
-    ├── dashboard.html          # Document management dashboard (protected)
-    ├── templates.html          # Legal template library (protected)
-    ├── editor.html             # Rich text document editor (protected)
-    ├── analysis.html           # Document analysis & verification (protected)
-    ├── css/
-    │   └── styles.css          # Custom styles (smart fields, highlights, animations)
-    ├── js/
-    │   ├── auth.js             # Authentication logic (login, signup, session)
-    │   ├── data.js             # Shared utilities, dummy documents, templates, clauses
-    │   ├── dashboard.js        # Dashboard CRUD operations, search, filter
-    │   ├── templates.js        # Template browsing and preview
-    │   ├── editor.js           # Rich text editing, smart fields, auto-save
-    │   ├── bd-legal-data.js    # Bangladesh legal documents library (12 acts)
-    │   └── analysis.js         # Document analysis, Q&A chat, verification
-    └── assets/                 # (Reserved for images/icons)
+├── index.html                  # Landing page with hero & features
+├── login.html                  # User login page
+├── signup.html                 # User registration page
+├── dashboard.html              # Document management dashboard (protected)
+├── templates.html              # Legal template library (protected)
+├── editor.html                 # Rich text document editor (protected)
+├── analysis.html               # Document analysis & verification (protected)
+├── css/
+│   └── styles.css              # Custom styles (smart fields, highlights, animations)
+├── js/
+│   ├── auth.js                 # Authentication logic (login, signup, session)
+│   ├── data.js                 # Shared utilities, dummy documents, templates, clauses
+│   ├── dashboard.js            # Dashboard CRUD operations, search, filter
+│   ├── templates.js            # Template browsing and preview
+│   ├── editor.js               # Rich text editing, smart fields, auto-save
+│   ├── bd-legal-data.js        # Bangladesh legal documents library (12 acts)
+│   └── analysis.js             # Document analysis, Q&A chat, verification
+└── assets/                     # (Reserved for images/icons)
 ```
+
+## Hosting
+
+This project is hosted on GitHub Pages at:
+**https://toriqultonu.github.io/LLB-Buddy/**
 
 ## Tech Stack
 
