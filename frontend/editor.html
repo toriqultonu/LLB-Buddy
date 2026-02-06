@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Editor - LLB Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a5f',
+                        secondary: '#2d5a87',
+                        accent: '#d4a853',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6z"/>
+                        </svg>
+                        <span class="text-xl font-bold">LLB Buddy</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="dashboard.html" class="hover:text-accent transition">Dashboard</a>
+                    <a href="templates.html" class="hover:text-accent transition">Templates</a>
+                    <a href="analysis.html" class="hover:text-accent transition">Analysis</a>
+                    <a href="editor.html" class="text-accent">Create Document</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            JD
+                        </div>
+                        <span class="hidden md:inline">John Doe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Editor Toolbar -->
+    <div class="bg-white border-b shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14">
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="documentTitle" value="Untitled Document" class="text-lg font-semibold bg-transparent border-none focus:ring-0 focus:outline-none" style="width: 300px;">
+                    <span id="saveStatus" class="text-sm text-gray-500">All changes saved</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="saveDocument()" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                        </svg>
+                        Save
+                    </button>
+                    <button onclick="exportDocument()" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Export
+                    </button>
+                    <button onclick="shareDocument()" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                        </svg>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex gap-6">
+            <!-- Sidebar -->
+            <div class="hidden lg:block w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow p-4 sticky top-24">
+                    <h3 class="font-semibold text-gray-900 mb-4">Document Settings</h3>
+
+                    <!-- Category -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                        <select id="docCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="contract">Contract</option>
+                            <option value="nda">NDA</option>
+                            <option value="employment">Employment</option>
+                            <option value="lease">Lease Agreement</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tags</label>
+                        <div id="tagsContainer" class="flex flex-wrap gap-2 mb-2">
+                            <span class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded">
+                                Draft
+                                <button class="ml-1 text-gray-400 hover:text-gray-600">&times;</button>
+                            </span>
+                        </div>
+                        <input type="text" placeholder="Add tag..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                    </div>
+
+                    <!-- Smart Fields -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Smart Fields</label>
+                        <div class="space-y-2">
+                            <button onclick="insertField('party_name')" class="w-full text-left px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm hover:bg-blue-100 transition">
+                                + Party Name
+                            </button>
+                            <button onclick="insertField('date')" class="w-full text-left px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm hover:bg-blue-100 transition">
+                                + Date
+                            </button>
+                            <button onclick="insertField('address')" class="w-full text-left px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm hover:bg-blue-100 transition">
+                                + Address
+                            </button>
+                            <button onclick="insertField('amount')" class="w-full text-left px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm hover:bg-blue-100 transition">
+                                + Amount
+                            </button>
+                            <button onclick="insertField('signature')" class="w-full text-left px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm hover:bg-blue-100 transition">
+                                + Signature Block
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Document Info -->
+                    <div class="pt-4 border-t">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Document Info</h4>
+                        <div class="space-y-1 text-sm text-gray-500">
+                            <p>Created: <span id="createdDate">Feb 6, 2024</span></p>
+                            <p>Modified: <span id="modifiedDate">Feb 6, 2024</span></p>
+                            <p>Word Count: <span id="wordCount">0</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Editor -->
+            <div class="flex-1">
+                <div class="bg-white rounded-xl shadow">
+                    <!-- Formatting Toolbar -->
+                    <div class="border-b p-2 flex flex-wrap items-center gap-1">
+                        <button onclick="formatText('bold')" class="p-2 hover:bg-gray-100 rounded" title="Bold">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/>
+                            </svg>
+                        </button>
+                        <button onclick="formatText('italic')" class="p-2 hover:bg-gray-100 rounded" title="Italic">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4h4m-2 0v16m-4 0h8"/>
+                            </svg>
+                        </button>
+                        <button onclick="formatText('underline')" class="p-2 hover:bg-gray-100 rounded" title="Underline">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19h16M6 4v8a6 6 0 0012 0V4"/>
+                            </svg>
+                        </button>
+                        <div class="w-px h-6 bg-gray-300 mx-1"></div>
+                        <button onclick="formatText('justifyLeft')" class="p-2 hover:bg-gray-100 rounded" title="Align Left">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h10M4 18h14"/>
+                            </svg>
+                        </button>
+                        <button onclick="formatText('justifyCenter')" class="p-2 hover:bg-gray-100 rounded" title="Align Center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M5 18h14"/>
+                            </svg>
+                        </button>
+                        <button onclick="formatText('justifyRight')" class="p-2 hover:bg-gray-100 rounded" title="Align Right">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M10 12h10M6 18h14"/>
+                            </svg>
+                        </button>
+                        <div class="w-px h-6 bg-gray-300 mx-1"></div>
+                        <button onclick="formatText('insertUnorderedList')" class="p-2 hover:bg-gray-100 rounded" title="Bullet List">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h.01M8 6h12M4 12h.01M8 12h12M4 18h.01M8 18h12"/>
+                            </svg>
+                        </button>
+                        <button onclick="formatText('insertOrderedList')" class="p-2 hover:bg-gray-100 rounded" title="Numbered List">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h.01M4 6v0M8 6h12M4 12h.01M4 12v0M8 12h12M4 18h.01M4 18v0M8 18h12"/>
+                            </svg>
+                        </button>
+                        <div class="w-px h-6 bg-gray-300 mx-1"></div>
+                        <select onchange="formatBlock(this.value)" class="px-2 py-1 border border-gray-300 rounded text-sm">
+                            <option value="p">Normal</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="h3">Heading 3</option>
+                        </select>
+                        <div class="w-px h-6 bg-gray-300 mx-1"></div>
+                        <button onclick="insertClause()" class="px-3 py-1 bg-accent/10 text-accent rounded text-sm font-medium hover:bg-accent/20" title="Insert Clause">
+                            + Clause
+                        </button>
+                    </div>
+
+                    <!-- Editor Content -->
+                    <div id="editor" contenteditable="true" class="p-8 min-h-[600px] focus:outline-none prose max-w-none" style="font-family: 'Times New Roman', serif;">
+                        <h1 style="text-align: center;">SERVICE AGREEMENT</h1>
+                        <p style="text-align: center; margin-bottom: 2rem;">
+                            <strong>Agreement Number:</strong> <span class="smart-field" data-field="agreement_number">[Agreement Number]</span>
+                        </p>
+
+                        <p>This Service Agreement (the "Agreement") is entered into as of <span class="smart-field" data-field="date">[Date]</span>, by and between:</p>
+
+                        <p><strong>PARTY A:</strong> <span class="smart-field" data-field="party_a_name">[Party A Name]</span>, located at <span class="smart-field" data-field="party_a_address">[Party A Address]</span> (hereinafter referred to as the "Service Provider")</p>
+
+                        <p><strong>PARTY B:</strong> <span class="smart-field" data-field="party_b_name">[Party B Name]</span>, located at <span class="smart-field" data-field="party_b_address">[Party B Address]</span> (hereinafter referred to as the "Client")</p>
+
+                        <h2>1. SERVICES</h2>
+                        <p>The Service Provider agrees to provide the following services to the Client:</p>
+                        <p><span class="smart-field" data-field="services_description">[Description of Services]</span></p>
+
+                        <h2>2. TERM</h2>
+                        <p>This Agreement shall commence on <span class="smart-field" data-field="start_date">[Start Date]</span> and shall continue until <span class="smart-field" data-field="end_date">[End Date]</span>, unless terminated earlier in accordance with the provisions of this Agreement.</p>
+
+                        <h2>3. COMPENSATION</h2>
+                        <p>In consideration for the services provided, the Client agrees to pay the Service Provider the sum of <span class="smart-field" data-field="amount">[Amount]</span> according to the following payment schedule:</p>
+                        <p><span class="smart-field" data-field="payment_schedule">[Payment Schedule]</span></p>
+
+                        <h2>4. CONFIDENTIALITY</h2>
+                        <p>Both parties agree to maintain the confidentiality of any proprietary or confidential information shared during the course of this Agreement.</p>
+
+                        <h2>5. TERMINATION</h2>
+                        <p>Either party may terminate this Agreement with <span class="smart-field" data-field="notice_period">[Notice Period]</span> days written notice to the other party.</p>
+
+                        <h2>6. GOVERNING LAW</h2>
+                        <p>This Agreement shall be governed by and construed in accordance with the laws of <span class="smart-field" data-field="jurisdiction">[Jurisdiction]</span>.</p>
+
+                        <div style="margin-top: 3rem;">
+                            <h2>SIGNATURES</h2>
+                            <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                                <div style="width: 45%;">
+                                    <p>_______________________________</p>
+                                    <p><strong>Service Provider</strong></p>
+                                    <p>Name: <span class="smart-field" data-field="party_a_signatory">[Signatory Name]</span></p>
+                                    <p>Date: _________________</p>
+                                </div>
+                                <div style="width: 45%;">
+                                    <p>_______________________________</p>
+                                    <p><strong>Client</strong></p>
+                                    <p>Name: <span class="smart-field" data-field="party_b_signatory">[Signatory Name]</span></p>
+                                    <p>Date: _________________</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar - Fill Fields -->
+            <div class="hidden xl:block w-80 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow p-4 sticky top-24">
+                    <h3 class="font-semibold text-gray-900 mb-4">Fill Smart Fields</h3>
+                    <p class="text-sm text-gray-500 mb-4">Complete the fields below to auto-fill the document</p>
+
+                    <div id="smartFieldsForm" class="space-y-4">
+                        <!-- Fields will be populated by JavaScript -->
+                    </div>
+
+                    <button onclick="fillAllFields()" class="w-full mt-6 px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition">
+                        Apply to Document
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Export Document</h3>
+            <div class="space-y-3">
+                <button onclick="downloadAs('pdf')" class="w-full flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                        <span class="text-red-600 font-bold text-sm">PDF</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-medium text-gray-900">PDF Document</p>
+                        <p class="text-sm text-gray-500">Best for printing and sharing</p>
+                    </div>
+                </button>
+                <button onclick="downloadAs('docx')" class="w-full flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                        <span class="text-blue-600 font-bold text-sm">DOC</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-medium text-gray-900">Word Document</p>
+                        <p class="text-sm text-gray-500">Editable in Microsoft Word</p>
+                    </div>
+                </button>
+                <button onclick="downloadAs('txt')" class="w-full flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
+                        <span class="text-gray-600 font-bold text-sm">TXT</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-medium text-gray-900">Plain Text</p>
+                        <p class="text-sm text-gray-500">Simple text format</p>
+                    </div>
+                </button>
+            </div>
+            <button onclick="closeExportModal()" class="w-full mt-4 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Share Document</h3>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Share with email</label>
+                <input type="email" id="shareEmail" placeholder="Enter email address" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Permission</label>
+                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <option value="view">Can view</option>
+                    <option value="edit">Can edit</option>
+                    <option value="comment">Can comment</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Or copy link</label>
+                <div class="flex">
+                    <input type="text" id="shareLink" value="https://llb-buddy.com/doc/abc123" readonly class="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg bg-gray-50">
+                    <button onclick="copyLink()" class="px-4 py-2 bg-primary text-white rounded-r-lg hover:bg-secondary">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="closeShareModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button onclick="sendShare()" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary">
+                    Send Invite
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clause Library Modal -->
+    <div id="clauseModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-xl font-bold text-gray-900">Clause Library</h3>
+                <button onclick="closeClauseModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto max-h-[60vh]">
+                <div class="mb-4">
+                    <input type="text" id="clauseSearch" placeholder="Search clauses..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+                <div id="clauseList" class="space-y-3">
+                    <!-- Clauses will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

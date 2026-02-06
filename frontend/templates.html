@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates - LLB Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a5f',
+                        secondary: '#2d5a87',
+                        accent: '#d4a853',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h6v6h6v10H6z"/>
+                        </svg>
+                        <span class="text-xl font-bold">LLB Buddy</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="dashboard.html" class="hover:text-accent transition">Dashboard</a>
+                    <a href="templates.html" class="text-accent">Templates</a>
+                    <a href="analysis.html" class="hover:text-accent transition">Analysis</a>
+                    <a href="editor.html" class="hover:text-accent transition">Create Document</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-primary font-bold">
+                            JD
+                        </div>
+                        <span class="hidden md:inline">John Doe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Document Templates</h1>
+            <p class="text-gray-600 mt-1">Choose from professionally crafted legal document templates</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-3 mb-8">
+            <button class="category-btn active px-4 py-2 rounded-full bg-primary text-white font-medium" data-category="all">
+                All Templates
+            </button>
+            <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-300" data-category="contract">
+                Contracts
+            </button>
+            <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-300" data-category="employment">
+                Employment
+            </button>
+            <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-300" data-category="real-estate">
+                Real Estate
+            </button>
+            <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-300" data-category="business">
+                Business
+            </button>
+            <button class="category-btn px-4 py-2 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-300" data-category="personal">
+                Personal
+            </button>
+        </div>
+
+        <!-- Templates Grid -->
+        <div id="templatesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Templates will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Template Preview Modal -->
+    <div id="previewModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 id="previewTitle" class="text-xl font-bold text-gray-900">Template Preview</h3>
+                <button onclick="closePreviewModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto max-h-[60vh]">
+                <div id="previewContent" class="prose max-w-none">
+                    <!-- Preview content will be inserted here -->
+                </div>
+            </div>
+            <div class="p-6 border-t bg-gray-50 flex justify-end space-x-3">
+                <button onclick="closePreviewModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                    Cancel
+                </button>
+                <a id="useTemplateBtn" href="editor.html" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary inline-flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    Use This Template
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/templates.js"></script>
+</body>
+</html>
